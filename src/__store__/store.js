@@ -4,11 +4,10 @@ import createSaga from 'redux-saga'
 import rootSaga from './sagas'
 
 const sagasMiddleware = createSaga()
-const middleware = [...getDefaultMiddleware({ thunk: false }), sagasMiddleware];
-const devMode = process.env.NODE_ENV === 'development';
+const middleware = [...getDefaultMiddleware({ thunk: false }), sagasMiddleware]
+const devMode = process.env.NODE_ENV === 'development'
 
-export default function configureAppStore() {
-
+export default function configureAppStore () {
   const store = configureStore({
     reducer: rootReducer,
     devTools: devMode,

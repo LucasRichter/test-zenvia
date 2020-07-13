@@ -2,12 +2,12 @@ import styled, { css } from 'styled-components'
 import colors from '../utils/colors'
 
 const Text = styled.p`
-  color: ${p => p.color || colors.grey};
-  font-size: 15px;
-  font-family: 'Poppins';
+  color: ${p => p.color || colors.black};
+  font-size: ${p => p.size || '15px'};
+  font-family: 'Roboto', sans-serif;
 
-  ${p => p.red && css`
-    color: ${colors.red};
+  ${p => p.center && css`
+    text-align: center;
   `}
 
   ${p => p.small && css`
@@ -15,7 +15,11 @@ const Text = styled.p`
   `}
 
   ${p => p.big && css`
-      font-size: 18px;
+    font-size: 18px;
+  `}
+
+  ${p => p.bold && css`
+    font-weight: bold;
   `}
 `
 
