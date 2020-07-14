@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useState, useRef } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { loadCharacters, cleanCharacters } from '../__store__/characters'
@@ -10,7 +10,7 @@ import Input from './Input'
 import Icon from './Icon'
 import colors from '../utils/colors'
 
-const CharactersList = ({
+export const CharactersList = ({
   loadCharacters,
   characters,
   cleanCharacters,
@@ -24,7 +24,7 @@ const CharactersList = ({
     delayedQuery(value)
   }
 
-  useEffect(() => {
+  React.useEffect(() => {
     window.onscroll = debounce(() => {
       if (
         window.innerHeight + document.documentElement.scrollTop ===
@@ -35,7 +35,7 @@ const CharactersList = ({
     }, 100)
   }, [loading, name])
 
-  useEffect(() => {
+  React.useEffect(() => {
     const perPage = 9
     const limit = perPage * page
     loadCharacters({
@@ -53,9 +53,11 @@ const CharactersList = ({
         width='500px'
       >
         <Input
+          id='search'
           prefix={<Icon size='25px' icon='search' color={colors.grey} />}
           placeholder='Search character'
           type='search'
+          value={name}
           onChange={e => handleChange(e.target.value)}
         />
       </Box>
@@ -92,6 +94,13 @@ CharactersList.propTypes = {
   loading: PropTypes.bool,
   cleanCharacters: PropTypes.func.isRequired,
   loadCharacters: PropTypes.func.isRequired
+}
+
+CharactersList.defaultProps = {
+  characters: [],
+  loading: false,
+  cleanCharacters: () => { },
+  loadCharacters: () => {}
 }
 
 const mapStateToProps = (state) => ({

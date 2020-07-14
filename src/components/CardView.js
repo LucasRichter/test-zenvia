@@ -7,7 +7,7 @@ import colors from '../utils/colors'
 import styled, { css } from 'styled-components'
 import TrackVisibility from 'react-on-screen'
 
-const Content = styled(Flex)`
+export const Content = styled(Flex)`
   position: relative;
   border-radius: 20px;
   overflow: hidden;
@@ -79,7 +79,7 @@ const CardView = ({
               alignItems='center'
             >
               <Text big bold color='white'>{nickname}</Text>
-              {status !== 'alive' && (
+              {status.toLowerCase() !== 'alive' && (
                 <Box ml='10px'>
                   <Icon size='25px' icon='death' color='white' />
                 </Box>

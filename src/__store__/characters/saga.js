@@ -4,7 +4,7 @@ import { loadCharacters, setCharacters } from '.'
 import getCharacters from '../../services/getCharacters'
 import { setApi } from '../api'
 
-function * _loadCharacters ({ payload }) {
+export function * _loadCharacters ({ payload }) {
   yield put(setApi({ key: 'characters', value: true }))
   const characters = yield call(getCharacters, payload)
   yield put(setCharacters(characters))
